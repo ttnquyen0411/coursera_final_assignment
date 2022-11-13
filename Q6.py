@@ -19,10 +19,10 @@ def make_graph(stock_data, revenue_data, stock):
     xaxis_rangeslider_visible=True)
     fig.show()
 
-#tesla_data
+#gme_data
 gme = yf.Ticker('GME')
 gme_data = gme.history(period = "max")
-#tesla_revenue
+#gme_revenue
 url = "https://www.macrotrends.net/stocks/charts/GME/gamestop/revenue"
 html_data = requests.get(url).text
 soup = BeautifulSoup(html_data, "html.parser")
@@ -36,4 +36,4 @@ for row in soup.find_all("tbody")[1].find_all("tr"):
 
     gme_revenue = gme_revenue.append({"Date": date, "Revenue": revenue}, ignore_index=True)
 
-make_graph(gme_data, gme_revenue, 'Tesla')
+make_graph(gme_data, gme_revenue, 'GME')
